@@ -212,7 +212,6 @@ namespace PCOE {
 
                 std::vector<double> eventStateOutputs = this->model->eventStateEqn(x);
                 for (unsigned int p = 0; p < eventStateOutputs.size(); p++) {
-                    std::cout << predictionEvent.eventState.size() << std::endl;
                     predictionEvent.eventState[timeIndex][sample] = eventStateOutputs[p];
                 }
 
