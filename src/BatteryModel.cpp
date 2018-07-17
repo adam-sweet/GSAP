@@ -466,7 +466,14 @@ void BatteryModel::predictedOutputEqn(const double,
     double qnS       = x[indices.states.qnS];
     double qnB       = x[indices.states.qnB];
     z[PRED_OUT::SOC] = (qnS + qnB) / parameters.qnMax;
-    ;
+}
+
+std::vector<double> BatteryModel::eventStateEqn(const std::vector<double>& x) {
+    double qnS = x[indices.states.qnS];
+    double qnB = x[indices.states.qnB];
+    std::vector<double> eventState(1);
+    eventState[PRED_OUT::SOC] = (qnS + qnB) / parameters.qnMax;
+    return eventState;
 }
 
 // Set model parameters, given qMobile

@@ -105,6 +105,13 @@ namespace PCOE {
         ProgEvent& predictionEvent = prediction.events[0];
         predictionEvent.setUncertainty(UType::Samples);
         predictionEvent.getTOE().npoints(numSamples);
+        predictionEvent.setNPoints(numSamples);
+        predictionEvent.eventState.resize(ceil(horizon / model->getDt()) + 1, UData(UType::Samples));
+        for (auto& element : predictionEvent.eventState) {
+            element.npoints(numSamples);
+            element.uncertainty(UType::Samples);
+
+        }
 
         DataPoint& predictionSysTraj = prediction.sysTrajectories[0];
         predictionSysTraj.setUncertainty(UType::Samples);
@@ -201,6 +208,12 @@ namespace PCOE {
                     data.sysTrajectories[this->model->predictedOutputs[p]][timeIndex][sample] =
                         z[p];
                     predictionSysTraj[timeIndex][sample] = z[p];
+                }
+
+                std::vector<double> eventStateOutputs = this->model->eventStateEqn(x);
+                for (unsigned int p = 0; p < eventStateOutputs.size(); p++) {
+                    std::cout << predictionEvent.eventState.size() << std::endl;
+                    predictionEvent.eventState[timeIndex][sample] = eventStateOutputs[p];
                 }
 
                 // Sample process noise - for now, assuming independent

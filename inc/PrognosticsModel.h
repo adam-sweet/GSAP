@@ -60,6 +60,8 @@ namespace PCOE {
         virtual void predictedOutputEqn(const double t, const std::vector<double> & x,
             const std::vector<double> & u, std::vector<double> & z) = 0;
 
+        virtual std::vector<double> eventStateEqn(const std::vector<double>& x) = 0;
+
         inline unsigned int getNumInputParameters() const { return numInputParameters; }
         inline unsigned int getNumPredictedOutputs() const { return numPredictedOutputs; }
         

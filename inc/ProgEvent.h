@@ -114,9 +114,7 @@ namespace PCOE {
 
         std::string timeOfEventUnit; ///< Unit of the ToE
 
-    private:
-        unsigned int nSamples; ///< Number of samples in the occurrence matrix
-        ///@todo(CT): IS THIS NECESSARY?
+        std::vector<UData> eventState;
 
         /** @brief      Set the number of points in the events uncertainty representation (could be
          *samples or number of events)
@@ -126,6 +124,10 @@ namespace PCOE {
          *  @see        ProgEvents
          **/
         void setNPoints(const unsigned int nPoints);
+
+    private:
+        unsigned int nSamples; ///< Number of samples in the occurrence matrix
+        ///@todo(CT): IS THIS NECESSARY?
     };
 }
 

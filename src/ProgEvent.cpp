@@ -45,15 +45,14 @@ namespace PCOE {
     void ProgEvent::setUncertainty(const UType uncertType) {
         // NOTE: LOSE ALL SAVED DATA
         timeOfEvent.uncertainty(uncertType);
+        for (auto& sample : eventState) {
+            sample.uncertainty(uncertType);
+        }
     }
 
     UType ProgEvent::getUncertainty() const {
         return timeOfEvent.uncertainty();
     }
-
-    // *------------------------*
-    // |    Private Functions   |
-    // *------------------------*
 
     void ProgEvent::setNPoints(const unsigned int nEvents) {
         timeOfEvent.npoints(nEvents);
