@@ -199,6 +199,8 @@ public:
                                              const input_type& u,
                                              const output_type& z) const override;
 
+    std::vector<double> eventStateEqn(const std::vector<double>& x);
+
     // Set default parameters, based on 18650 cells
     void setParameters(const double qMobile = QMOBILE_DEFAULT_VALUE, const double Vol = 2e-5);
 };

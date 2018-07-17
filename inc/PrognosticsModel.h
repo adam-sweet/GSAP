@@ -88,6 +88,7 @@ namespace PCOE {
                                   const state_type& x,
                                   const input_type& u) const = 0;
 
+        virtual std::vector<double> eventStateEqn(const std::vector<double>& x) = 0;
         /**
          * Derives the input vector from the given input parameters.
          *
