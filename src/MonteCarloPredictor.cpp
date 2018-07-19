@@ -109,7 +109,7 @@ namespace PCOE {
         predictionEvent.setUncertainty(UType::Samples);
         predictionEvent.getTOE().npoints(numSamples);
         predictionEvent.setNPoints(numSamples);
-        predictionEvent.eventState.resize(ceil(horizon / model->getDt()) + 1, UData(UType::Samples));
+        predictionEvent.eventState.resize(ceil(horizon / model->getDefaultTimeStep()) + 1, UData(UType::Samples));
         for (auto& element : predictionEvent.eventState) {
             element.npoints(numSamples);
             element.uncertainty(UType::Samples);
@@ -214,7 +214,7 @@ namespace PCOE {
                     predictionSysTraj[timeIndex][sample] = z[p];
                 }
 
-                std::vector<double> eventStateOutputs = this->model->eventStateEqn(x);
+                auto eventStateOutputs = this->model->eventStateEqn(x);
                 for (unsigned int p = 0; p < eventStateOutputs.size(); p++) {
                     predictionEvent.eventState[timeIndex][sample] = eventStateOutputs[p];
                 }

@@ -458,10 +458,10 @@ PrognosticsModel::predicted_output_type BatteryModel::predictedOutputEqn(double,
     return z_new;
 }
 
-std::vector<double> BatteryModel::eventStateEqn(const std::vector<double>& x) {
+Model::output_type BatteryModel::eventStateEqn(const state_type& x) {
     double qnS = x[indices.states.qnS];
     double qnB = x[indices.states.qnB];
-    std::vector<double> eventState(1);
+    auto eventState = getOutputVector();
     eventState[PRED_OUT::SOC] = (qnS + qnB) / parameters.qnMax;
     return eventState;
 }
