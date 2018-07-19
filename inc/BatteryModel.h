@@ -182,8 +182,6 @@ public:
                         const std::vector<double>& params,
                         const std::vector<double>& loadEstimate) const override;
 
-    std::vector<double> eventStateEqn(const std::vector<double>& x);
-
     /** Calculate predicted outputs of the model. Predicted outputs are those
      * that are not measured, but are interested in being predicted for
      * prognostics.

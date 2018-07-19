@@ -115,7 +115,6 @@ namespace PCOE {
                                                          const input_type& u,
                                                          const output_type& z) const = 0;
 
-        virtual std::vector<double> eventStateEqn(const std::vector<double>& x) = 0;
         /**
          * Gets the number of input parameters required by the current model.
          **/
