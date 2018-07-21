@@ -215,7 +215,6 @@ set(SRCS
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc/)
 add_library(gsap ${HEADERS} ${SRCS})
-
-
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Test/)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/example/)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/templates/)
